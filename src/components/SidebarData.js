@@ -1,7 +1,7 @@
 import React from 'react'
 import * as IoIcons from 'react-icons/io5'
 import * as RiIcons from 'react-icons/ri'
-import * as GrIcons from 'react-icons/gr'
+import * as AiIcons from 'react-icons/ai'
 
 
 export const SidebarData = [{
@@ -12,8 +12,8 @@ export const SidebarData = [{
     {
         title       : 'Gateways',
         path        : '/gateways',
-        icon        : <GrIcons.GrGateway />,
-        iconClose   : <RiIcons.RiArrowDownSFill />,
+        icon        : <AiIcons.AiOutlineGateway />,
+        iconClosed  : <RiIcons.RiArrowDownSFill />,
         iconOpened  : <RiIcons.RiArrowUpSFill />,
         subNav      : [{
             title       : 'Add Gateway',
@@ -30,7 +30,7 @@ export const SidebarData = [{
         title       : 'Devices',
         path        : '/devices',
         icon        : <RiIcons.RiDeviceFill />,
-        iconClose   : <RiIcons.RiArrowDownSFill />,
+        iconClosed   : <RiIcons.RiArrowDownSFill />,
         iconOpened  : <RiIcons.RiArrowUpSFill />,
         subNav      : [{
             title       : 'Add Device',
