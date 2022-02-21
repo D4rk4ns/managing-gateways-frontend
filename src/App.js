@@ -1,15 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 import Sidebar from './components/Sidebar';
-
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Overview from './pages/Overview';
+import Gateway from './pages/Gateways';
+import Device from './pages/Devices';
 
 function App() {
   return (
     <Router>
-      <Sidebar>
-        
-      </Sidebar>
+      <Sidebar />
+      <Routes>
+        <Route path='/overview' exact element={<Overview />} />
+        <Route path='/gateways' exact element={<Gateway/>} />
+        <Route path='/devices' exact  element={<Device />} />
+      </Routes>        
     </Router>
   );
 }

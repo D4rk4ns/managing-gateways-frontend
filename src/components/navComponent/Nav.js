@@ -18,7 +18,8 @@ export const NavIcon = styled(Link)`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-`
+`;
+
 export const SidebarNav = styled.nav`
     background: #15171c;
     width: 250px;
@@ -30,7 +31,8 @@ export const SidebarNav = styled.nav`
     left: ${({ sidebar }) => (sidebar ? '0' : '-100%')};
     transition: 350ms;
     z-index: 10;
-`
+`;
+
 export const SidebarWrap = styled.div`
     width: 100%;
-`
+`;
