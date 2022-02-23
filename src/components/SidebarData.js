@@ -2,6 +2,7 @@ import React from 'react'
 import * as IoIcons from 'react-icons/io5'
 import * as RiIcons from 'react-icons/ri'
 import * as AiIcons from 'react-icons/ai'
+import * as MdIcons from 'react-icons/md'
 
 
 export const SidebarData = [{
@@ -21,6 +22,11 @@ export const SidebarData = [{
             icon        : <RiIcons.RiAddBoxFill />
         },
         {
+            title       : 'Update Gateway',
+            path        : '/gateways/update',
+            icon        : <MdIcons.MdSystemUpdateAlt />
+        },
+        {
             title       : 'Remove Gateway',
             path        : '/gateways/remove',
             icon        : <RiIcons.RiDeleteBin2Fill />
@@ -36,6 +42,11 @@ export const SidebarData = [{
             title       : 'Add Device',
             path        : '/devices/add',
             icon        : <RiIcons.RiAddBoxFill />
+        },
+        {
+            title       : 'Update Device',
+            path        : '/devices/update',
+            icon        : <MdIcons.MdSystemUpdateAlt />
         },
         {
             title       : 'Remove Device',
