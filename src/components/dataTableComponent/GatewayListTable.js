@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 //import styled from 'styled-components';
 import MaterialTable from 'material-table';
+import FetchDataTable from './FetchDataTable';
 
 
 const GatewayListTable = ({ item}) =>{
@@ -20,7 +21,15 @@ const GatewayListTable = ({ item}) =>{
     ]);
 
     return <>
-            <MaterialTable
+            <FetchDataTable />
+    </>
+}
+
+export default GatewayListTable;
+
+
+/*
+<MaterialTable
                 title="Gateway List"
                 columns={columns}
                 data={data}
@@ -35,7 +44,4 @@ const GatewayListTable = ({ item}) =>{
                     }),
                 }}
             />
-    </>
-}
-
-export default GatewayListTable;
+            */
