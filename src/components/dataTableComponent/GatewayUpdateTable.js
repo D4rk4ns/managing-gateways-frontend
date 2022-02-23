@@ -22,7 +22,7 @@ const GatewayUpdateTable = () =>{
                 title="Update Gateway"
                 columns={columns}
                 data={data}
-                options={{actionsColumnIndex=-1}}
+                options={{actionsColumnIndex='-1'}}
                 editable={{
                     onRowUpdate: (newData, oldData) =>
                     new Promise((resolve, reject) => {
