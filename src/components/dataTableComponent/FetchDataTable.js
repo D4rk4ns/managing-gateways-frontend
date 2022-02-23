@@ -11,8 +11,7 @@ export default class FetchDataTable extends Component {
     }
 
     componentDidMount(prevProps) {    
-        const maxResults = 20;    
-        const url = `https://managing-gateways-backend.herokuapp.com/gateway/?results=${maxResults}`;
+        const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
         axios.get(url)
         .then(results => {
             console.log(results);
