@@ -23,7 +23,7 @@ const GatewayRemoveTable = () =>{
                 title="Remove Gateway"
                 columns={columns}
                 data={data}
-                options={{actionsColumnIndex='-1'}}
+                options={{actionsColumnIndex: -1}}
                 editable={{
                     onRowDelete: oldData =>
                     new Promise((resolve, reject) => {
