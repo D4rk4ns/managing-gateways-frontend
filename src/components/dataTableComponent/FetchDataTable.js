@@ -45,8 +45,6 @@ export default class FetchDataTable extends Component {
             
             columns={[
                 {
-                title: 'Image',
-                field: 'image',
                 render: rowData => (
                     <img
                     style={{ height: 36, borderRadius: '50%' }}
@@ -54,10 +52,10 @@ export default class FetchDataTable extends Component {
                     />
                 ),
                 },
-                { title: "Name", field: "name", type: "numeric", align: 'left' },            
-                { title: "Gender", field: "gender"},            
-                { title: "Email", field: "email" },
-                { title: "Cell Phone", field: "cell", type: "numeric" }                                     
+                { title: 'Serial Number', field: 'serialNumber'},
+                { title: 'Gateway Name', field: 'gatewayName'},
+                { title: 'IPv4 Address', field: 'address', initialEditValue: "1.1.1.1"},
+                { title: 'Peripheral Devices', field: 'peripheralDevice', lookup:{device1:'46546',device2:'445646'}}                                    
             ]}
             data={this.state.GatewayArray}      
             
