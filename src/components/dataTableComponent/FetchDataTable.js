@@ -14,39 +14,32 @@ export default class FetchDataTable extends Component {
         const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
         axios.get(url)
         .then(results => {
-            console.log(results);
-            console.log(results.data.gateways);
             this.setState({ gateway: results.data.gateways });
         
-    
-        var newGateway = results.data.gateways.map(function(val) {          
-            return {
-                serialNumber: val.serialNumber,
-                gatewayName: val.gatewayName,
-                address: val.address,
-                peripheralDevice: val.peripheralDevice,          
-            };
-        });
-        
-        console.log(results.data.gateways); 
-        
-        this.setState({
-            GatewayArray: newGateway  //set state of the weather5days
-        },()=> {
-            console.log(this.state.GatewayArray); 
-            console.log('this.tableArray ',this.state.GatewayArray);
+            var newGateway = results.data.gateways.map(function(val) {          
+                return {
+                    serialNumber: val.serialNumber,
+                    gatewayName: val.gatewayName,
+                    address: val.address,
+                    peripheralDevice: val.peripheralDevice,          
+                };
+            });
+
+            this.setState({ GatewayArray: newGateway });
+
         })
+        
         .catch((error) => {
-            console.log(error.message);
+                console.log(error.message);
         });
-        });
-    }
+    };
+    
     
     render() {
         return (      
         <div style={{ maxWidth: "50%", marginLeft: "300px", marginTop: "100px" }}>
             <MaterialTable
-            
+            title="Gateway List"
             columns={[
 
                 { title: 'Serial Number', field: 'serialNumber'},
@@ -56,7 +49,7 @@ export default class FetchDataTable extends Component {
             ]}
             data={this.state.GatewayArray}      
             
-            title="Demo Title"
+            
             />
         </div>
         );
