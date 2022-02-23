@@ -44,14 +44,7 @@ export default class FetchDataTable extends Component {
             <MaterialTable
             
             columns={[
-                {
-                render: rowData => (
-                    <img
-                    style={{ height: 36, borderRadius: '50%' }}
-                    src={rowData.image}
-                    />
-                ),
-                },
+
                 { title: 'Serial Number', field: 'serialNumber'},
                 { title: 'Gateway Name', field: 'gatewayName'},
                 { title: 'IPv4 Address', field: 'address', initialEditValue: "1.1.1.1"},
