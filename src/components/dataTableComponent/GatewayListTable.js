@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 //import styled from 'styled-components';
 import MaterialTable from 'material-table';
-import FetchDataTable from './FetchDataTable';
+import Test from './Test';
 
 
 const GatewayListTable = ({ item}) =>{
 
 
     return <div>
-            <FetchDataTable />
+            <Test />
     </div>
 }
 
