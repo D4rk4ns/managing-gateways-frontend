@@ -15,10 +15,11 @@ export default class FetchDataTable extends Component {
         axios.get(url)
         .then(results => {
             console.log(results);
-            console.log(results.data.results);
-            this.setState({ gateway: results.data.results });
+            console.log(results.data.gateways);
+            this.setState({ gateway: results.data.gateways });
+        
     
-        var newGateway = results.data.results.map(function(val) {          
+        var newGateway = results.data.gateways.map(function(val) {          
             return {
                 serialNumber: val.serialNumber,
                 gatewayName: val.gatewayName,
@@ -27,14 +28,17 @@ export default class FetchDataTable extends Component {
             };
         });
         
-        console.log(results.data.results); 
+        console.log(results.data.gateways); 
         
         this.setState({
             GatewayArray: newGateway  //set state of the weather5days
         },()=> {
             console.log(this.state.GatewayArray); 
             console.log('this.tableArray ',this.state.GatewayArray);
-        });      
+        })
+        .catch((error) => {
+            console.log(error.message);
+        });
         });
     }
     
