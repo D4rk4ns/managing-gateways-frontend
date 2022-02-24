@@ -38,10 +38,7 @@ const GatewayUpdateTable = () =>{
                         console.log(newData);
                         console.log(url+"/"+oldData._id);
                         axios.put(url+"/"+oldData._id, 
-                            querystring.stringify({ body: newData }), {
-                            headers: { 
-                                "Content-Type": "application/x-www-form-urlencoded"
-                            })
+                            querystring.stringify({ body: newData }))
                         .then(resp => {
                             console.log(resp);
                             getGateways()
