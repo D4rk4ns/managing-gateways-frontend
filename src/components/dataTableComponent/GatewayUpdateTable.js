@@ -6,8 +6,7 @@ import MaterialTable from 'material-table';
 //{ item }
 const GatewayUpdateTable = () =>{
     const [data, setData] = useState([]);
-    const [gateway, setGateway] = useState([]);
-
+    const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
     const [columns, setColumns] = useState([
         { title: 'Serial Number', field: 'serialNumber'},
         { title: 'Gateway Name', field: 'gatewayName'},
@@ -15,33 +14,22 @@ const GatewayUpdateTable = () =>{
     ]);
 
     useEffect(() => {
-        const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
-        axios.get(url)
-        .then((response) => setData(response.data))
-        //.then(results => {setState(results.data.gateways);
-        .then((response) => {
-            
-            setGateway(response.gateways.map(function(val) {          
-                    return {
-                        serialNumber        : val.serialNumber,
-                        gatewayName         : val.gatewayName,
-                        address             : val.address,
-                        peripheralDevice    : val.peripheralDevice,          
-                    };
-                })
-            );
-        })
-        .catch((error) => {
-                console.log(error.message);
-        });
-    }, []);
+        getGateways()
+    },[]);
 
+    const getGateways = () =>{
+        axios.get(url)
+        .then(response => setData(response.data.gateways))
+        .catch((error) => {
+            console.log(error.message);
+        });
+    }
 
     return <>
             <MaterialTable
                 title="Update Gateway"
                 columns={columns}
-                data={gateway}
+                data={data}
                 options={{actionsColumnIndex: -1}}
                 editable={{
                     onRowUpdate: (newData, oldData) =>
