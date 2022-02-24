@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 //import styled from 'styled-components';
-import MaterialTable from 'material-table';
+import MaterialTable, { Column } from '@material-table/core';
 
 const GatewayUpdateTable = () =>{
     const [data, setData] = useState([]);
