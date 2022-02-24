@@ -1,11 +1,11 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const GatewayList = () => {
+const getGateways = () =>{
 
     const [data, setData] = useState([]);
     const [gateway, setGateway] = useState([]);
+
 
     useEffect(() => {
         const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
@@ -13,7 +13,7 @@ const GatewayList = () => {
         .then((response) => setData(response.data))
         //.then(results => {setState(results.data.gateways);
         .then((response) => {
-
+            console.log(response.gateway);
             setGateway(response.gateways.map(function(val) {          
                     return {
                         serialNumber        : val.serialNumber,
@@ -27,23 +27,11 @@ const GatewayList = () => {
         .catch((error) => {
                 console.log(error.message);
         });
+
+        console.log('Hello There!');
     }, []);
 
-
-    return (
-        <div style={{ maxWidth: "50%", marginLeft: "300px", marginTop: "100px" }}>
-            <MaterialTable
-            title="Gateway List"
-            columns={[
-                { title: 'Serial Number', field: 'serialNumber'},
-                { title: 'Gateway Name', field: 'gatewayName'},
-                { title: 'IPv4 Address', field: 'address', initialEditValue: "1.1.1.1"},
-                { title: 'Peripheral Devices', field: 'peripheralDevice', lookup:{device1:'46546',device2:'445646'}}                                    
-            ]}
-            data={gateway}      
-            />
-        </div>
-    );
+    return gateway;
 }
 
-export default test;
+export default getGateways;

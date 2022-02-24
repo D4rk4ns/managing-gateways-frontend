@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 //import styled from 'styled-components';
 import MaterialTable from 'material-table';
+import getGateways from './GatewayInfo';
 
 //{ item }
 const GatewayUpdateTable = () =>{
@@ -12,16 +13,17 @@ const GatewayUpdateTable = () =>{
         { title: 'IPv4 Address', field: 'address'}
     ]);
 
+    /*
     const [data, setData] = useState([
         { serialNumber: '894561561', gatewayName: 'Huawei', address: '192.168.0.1'},
         { serialNumber: '894562651', gatewayName: 'Samsung', address: '192.168.0.1'}
     ]);
-
+    */
     return <>
             <MaterialTable
                 title="Update Gateway"
                 columns={columns}
-                data={data}
+                data={getGateways}
                 options={{actionsColumnIndex: -1}}
                 editable={{
                     onRowUpdate: (newData, oldData) =>
