@@ -40,7 +40,7 @@ const GatewayListTable = () =>{
     return (
             <MaterialTable
             title="Gateway List"
-            options={{exportButton: true, addRowPosition='first', actionsColumnIndex: -1}}
+            options={{exportButton: true, addRowPosition:'first', actionsColumnIndex: -1}}
             columns={columns}
             data={gateway}      
             />
