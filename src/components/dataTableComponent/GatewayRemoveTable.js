@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 //import styled from 'styled-components';
 import MaterialTable from 'material-table';
 
-//{ item }
 const GatewayRemoveTable = () =>{
-    
-    //const [gatewayUpdateTable, setGatewayUpdateTable] = useState(false);
-    //const showGatewayUPdateTable= () => setGatewayTable(!gatewayTable);
-    const [columns, setColumns] = useState([
+    const [data, setData] = useState([]);
+    const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
+    const columns = [
         { title: 'Serial Number', field: 'serialNumber'},
         { title: 'Gateway Name', field: 'gatewayName'},
-        { title: 'IPv4 Address', field: 'address'}
-    ]);
+        { title: 'IPv4 Address', field: 'address'},
+        { title: 'Peripheral Devices', field: 'peripheralDevice'}
+    ];
 
-    const [data, setData] = useState([
-        { serialNumber: '894561561', gatewayName: 'Huawei', address: '192.168.0.1'},
-        { serialNumber: '894562651', gatewayName: 'Samsung', address: '192.168.0.1'}
-    ]);
+    useEffect(() => {
+        getGateways()
+    },[]);
+
+    const getGateways = () =>{
+        axios.get(url)
+        .then(response => setData(response.data.gateways))
+        .catch((error) => {
+            console.log(error.message);
+        });
+    }
 
     return <>
             <MaterialTable
@@ -25,16 +32,14 @@ const GatewayRemoveTable = () =>{
                 data={data}
                 options={{actionsColumnIndex: -1}}
                 editable={{
-                    onRowDelete: oldData =>
-                    new Promise((resolve, reject) => {
-                        setTimeout(() => {
-                        const dataDelete = [...data];
-                        const index = oldData.tableData.id;
-                        dataDelete.splice(index, 1);
-                        setData([...dataDelete]);
-                        resolve()
-                        }, 1000)
-                    }),
+                    onRowDelete: (newData, oldData) => new Promise((resolve, reject) => {
+                        //Backend call
+                        axios.delete(url+"/"+oldData.id)
+                        .then(resp => {
+                            getGateways()
+                            resolve()
+                        })
+                    })
                 }}
             />
     </>

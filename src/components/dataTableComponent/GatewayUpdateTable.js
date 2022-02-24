@@ -7,7 +7,7 @@ const GatewayUpdateTable = () =>{
     const [data, setData] = useState([]);
     const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
     const columns = [
-        { title: 'Serial Number', field: 'serialNumber', validate: rowData => rowData.name === undefined || rowData.name === "" ? "Required" : true},
+        { title: 'Serial Number', field: 'serialNumber'},
         { title: 'Gateway Name', field: 'gatewayName'},
         { title: 'IPv4 Address', field: 'address'},
         { title: 'Peripheral Devices', field: 'peripheralDevice'}
