@@ -13,10 +13,6 @@ const GatewayUpdateTable = () =>{
         { title: 'Peripheral Devices', field: 'peripheralDevice'}
     ];
 
-    useEffect(() => {
-        getGateways()
-    },[]);
-
     const getGateways = () =>{
         axios.get(url)
         .then(response => setData(response.data.gateways))
@@ -24,6 +20,12 @@ const GatewayUpdateTable = () =>{
             console.log(error.message);
         });
     }
+
+    useEffect(() => {
+        getGateways()
+    },[]);
+
+    
 
     return <>
             <MaterialTable
@@ -36,7 +38,7 @@ const GatewayUpdateTable = () =>{
                         //Backend call
                         console.log(newData);
                         console.log(url+"/"+oldData._id);
-                        await axios.put(url+"/"+oldData._id, { body: newData })
+                        axios.put(url+"/"+oldData._id, { body: newData })
                         .then(resp => {
                             console.log(resp.data.message);
                             getGateways()

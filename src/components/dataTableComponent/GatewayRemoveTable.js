@@ -14,10 +14,6 @@ const GatewayRemoveTable = () =>{
         { title: 'Peripheral Devices', field: 'peripheralDevice'}
     ];
 
-    useEffect(() => {
-        getGateways()
-    },[]);
-
     const getGateways = () =>{
         axios.get(url)
         .then(response => setData(response.data.gateways))
@@ -25,6 +21,13 @@ const GatewayRemoveTable = () =>{
             console.log(error.message);
         });
     }
+
+
+    useEffect(() => {
+        getGateways()
+    },[]);
+
+    
 
     return <>
             <MaterialTable
