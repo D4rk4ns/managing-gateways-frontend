@@ -33,7 +33,6 @@ const GatewayListTable = () =>{
         }
     }, []);
 
-    console.log(fetchGateways);
     console.log(data);
 
     return (
