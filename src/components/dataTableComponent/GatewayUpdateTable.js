@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 //import styled from 'styled-components';
 import MaterialTable from 'material-table';
-const querystring = require('querystring');
 
 const GatewayUpdateTable = () =>{
     const [data, setData] = useState([]);
@@ -37,8 +36,7 @@ const GatewayUpdateTable = () =>{
                         //Backend call
                         console.log(newData);
                         console.log(url+"/"+oldData._id);
-                        axios.put(url+"/"+oldData._id, 
-                            querystring.stringify({ body: newData }))
+                        await axios.put(url+"/"+oldData._id, { body: newData })
                         .then(resp => {
                             console.log(resp.data.message);
                             getGateways()
