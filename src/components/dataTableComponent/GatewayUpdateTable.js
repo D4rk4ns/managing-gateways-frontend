@@ -7,7 +7,7 @@ const GatewayUpdateTable = () =>{
     const [data, setData] = useState([]);
     const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
     const columns = [
-        { title: 'Serial Number', field: 'serialNumber'},
+        { title: 'Serial Number', field: 'serialNumber', validate: rowData => rowData.name === undefined || rowData.name === "" ? "Required" : true},
         { title: 'Gateway Name', field: 'gatewayName'},
         { title: 'IPv4 Address', field: 'address'},
         { title: 'Peripheral Devices', field: 'peripheralDevice'}
@@ -32,15 +32,13 @@ const GatewayUpdateTable = () =>{
                 data={data}
                 options={{actionsColumnIndex: -1}}
                 editable={{
-                    onRowUpdate: (newData, oldData) =>
-                    new Promise((resolve, reject) => {
-                        setTimeout(() => {
-                        const dataUpdate = [...data];
-                        const index = oldData.tableData.id;
-                        dataUpdate[index] = newData;
-                        setData([...dataUpdate]);
-                        resolve();
-                        }, 1000)
+                    onRowUpdate: (newData, oldData) => new Promise((resolve, reject) => {
+                        //Backend call
+                        axios.put(url+"/"+oldData.id, { body: newData })
+                        .then(resp => {
+                            getStudents()
+                            resolve()
+                        })
                     })
                 }}
                 />
