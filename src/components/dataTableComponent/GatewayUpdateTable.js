@@ -34,7 +34,7 @@ const GatewayUpdateTable = () =>{
                 editable={{
                     onRowUpdate: (newData, oldData) => new Promise((resolve, reject) => {
                         //Backend call
-                        axios.put(url+"/"+oldData.id, { body: newData })
+                        axios.put(url+"/"+oldData._id, { body: newData })
                         .then(resp => {
                             getGateways()
                             resolve()

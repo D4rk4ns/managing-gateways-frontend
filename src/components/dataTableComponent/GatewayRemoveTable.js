@@ -7,6 +7,7 @@ const GatewayRemoveTable = () =>{
     const [data, setData] = useState([]);
     const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
     const columns = [
+        
         { title: 'Serial Number', field: 'serialNumber'},
         { title: 'Gateway Name', field: 'gatewayName'},
         { title: 'IPv4 Address', field: 'address'},
@@ -34,7 +35,7 @@ const GatewayRemoveTable = () =>{
                 editable={{
                     onRowDelete: (newData, oldData) => new Promise((resolve, reject) => {
                         //Backend call
-                        axios.delete(url+"/"+oldData.id)
+                        axios.delete(url+"/"+oldData._id)
                         .then(resp => {
                             getGateways()
                             resolve()
