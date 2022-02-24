@@ -31,6 +31,21 @@ const GatewayListTable = () =>{
                 columns={columns}
                 data={data}
                 options={{exportButton: true, addRowPosition:'first', actionsColumnIndex: -1}}
+                editable={{
+                    onRowAdd: (newData) => new Promise((resolve, reject) => {
+                            //Backend call
+                            console.log(newData);
+                            axios.post(url, querystring.stringify({ body: newData }))
+                            .then(resp => {
+                                console.log(resp.data.message);
+                                getGateways()
+                                resolve()
+                            })
+                            .catch((error) => {
+                                console.log(error.message);
+                            });
+                        })
+                }}
                 />
     </>
 }

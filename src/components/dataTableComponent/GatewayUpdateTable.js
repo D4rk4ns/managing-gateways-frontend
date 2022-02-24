@@ -40,10 +40,13 @@ const GatewayUpdateTable = () =>{
                         axios.put(url+"/"+oldData._id, 
                             querystring.stringify({ body: newData }))
                         .then(resp => {
-                            console.log(resp);
+                            console.log(resp.data.message);
                             getGateways()
                             resolve()
                         })
+                        .catch((error) => {
+                            console.log(error.message);
+                        });
                     })
                 }}
                 />
