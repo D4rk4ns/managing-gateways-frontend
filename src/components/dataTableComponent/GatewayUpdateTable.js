@@ -36,7 +36,7 @@ const GatewayUpdateTable = () =>{
                         //Backend call
                         axios.put(url+"/"+oldData.id, { body: newData })
                         .then(resp => {
-                            getStudents()
+                            getGateways()
                             resolve()
                         })
                     })
