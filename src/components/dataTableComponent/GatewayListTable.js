@@ -3,15 +3,15 @@ import React, { useState } from 'react';
 import MaterialTable from 'material-table';
 import FetchDataTable from './FetchDataTable';
 
-
-const GatewayListTable = ({ item}) =>{
+const GatewayListTable = () =>{
     const [data, setData] = useState([]);
     const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
-    const [columns, setColumns] = useState([
+    const columns = [
         { title: 'Serial Number', field: 'serialNumber'},
         { title: 'Gateway Name', field: 'gatewayName'},
-        { title: 'IPv4 Address', field: 'address'}
-    ]);
+        { title: 'IPv4 Address', field: 'address'},
+        { title: 'Peripheral Devices', field: 'peripheralDevice'}
+    ];
 
     useEffect(() => {
         getGateways()
