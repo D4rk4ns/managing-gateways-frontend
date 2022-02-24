@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 //import styled from 'styled-components';
 import MaterialTable from 'material-table';
+const querystring = require('querystring');
 
 const GatewayListTable = () =>{
     const [data, setData] = useState([]);
