@@ -5,18 +5,33 @@ import FetchDataTable from './FetchDataTable';
 
 
 const GatewayListTable = ({ item}) =>{
-    //const [gatewayUpdateTable, setGatewayUpdateTable] = useState(false);
-    //const showGatewayUPdateTable= () => setGatewayTable(!gatewayTable);
+    const [data, setData] = useState([]);
+    const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
     const [columns, setColumns] = useState([
         { title: 'Serial Number', field: 'serialNumber'},
         { title: 'Gateway Name', field: 'gatewayName'},
-        { title: 'IPv4 Address', field: 'address', initialEditValue: "1.1.1.1"},
-        { title: 'Peripheral Devices', field: 'peripheralDevice', lookup:{device1:'46546',device2:'445646'}}
+        { title: 'IPv4 Address', field: 'address'}
     ]);
 
+    useEffect(() => {
+        getGateways()
+    },[]);
+
+    const getGateways = () =>{
+        axios.get(url)
+        .then(response => setData(response.data.gateways))
+        .catch((error) => {
+            console.log(error.message);
+        });
+    }
 
     return <>
-            <FetchDataTable />
+            <MaterialTable
+                title="Gateway List"
+                columns={columns}
+                data={data}
+                options={{exportButton: true, addRowPosition:'first', actionsColumnIndex: -1}}
+                />
     </>
 }
 
@@ -28,7 +43,7 @@ export default GatewayListTable;
                 title="Gateway List"
                 columns={columns}
                 data={data}
-                options={{exportButton: true, addRowPosition='first', actionsColumnIndex=-1}}
+                options={{exportButton: true, addRowPosition:'first', actionsColumnIndex=-1}}
                 editable={{
                     onRowAdd: newData =>
                     new Promise((resolve, reject) => {
