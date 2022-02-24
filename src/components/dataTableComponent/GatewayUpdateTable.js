@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 //import styled from 'styled-components';
 import MaterialTable from 'material-table';
-const url = require('url');
+const querystring = require('querystring');
 
 const GatewayUpdateTable = () =>{
     const [data, setData] = useState([]);
@@ -38,7 +38,10 @@ const GatewayUpdateTable = () =>{
                         console.log(newData);
                         console.log(url+"/"+oldData._id);
                         axios.put(url+"/"+oldData._id, 
-                        new url.URLSearchParams({ body: newData }).toString())
+                            querystring.stringify({ body: newData }), {
+                            headers: { 
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            })
                         .then(resp => {
                             console.log(resp);
                             getGateways()
