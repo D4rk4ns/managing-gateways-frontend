@@ -7,7 +7,7 @@ import MaterialTable from 'material-table';
 const GatewayUpdateTable = () =>{
     const [data, setData] = useState([]);
     const [gateway, setGateway] = useState([]);
-    
+
     const [columns, setColumns] = useState([
         { title: 'Serial Number', field: 'serialNumber'},
         { title: 'Gateway Name', field: 'gatewayName'},
@@ -20,7 +20,7 @@ const GatewayUpdateTable = () =>{
         .then((response) => setData(response.data))
         //.then(results => {setState(results.data.gateways);
         .then((response) => {
-
+            
             setGateway(response.gateways.map(function(val) {          
                     return {
                         serialNumber        : val.serialNumber,

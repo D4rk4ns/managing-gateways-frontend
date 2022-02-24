@@ -20,7 +20,9 @@ const GatewayListTable = () =>{
         .then((response) => setData(response.data))
         //.then(results => {setState(results.data.gateways);
         .then((response) => {
-
+            console.log(response);
+            console.log(response.gateways);
+            console.log(response.data.gateways);
             setGateway(response.gateways.map(function(val) {          
                     return {
                         serialNumber        : val.serialNumber,
