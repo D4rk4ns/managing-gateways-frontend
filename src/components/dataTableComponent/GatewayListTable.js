@@ -16,7 +16,41 @@ const GatewayListTable = () =>{
 
     useEffect(() => {
         const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
-        axios.get(url)
+        const fetchGateways = async () =>{
+            try {
+                const response = await axios.get(url);
+                setData = (response.data);
+            } catch(err){
+                if(err.response){
+                    console.log(err.response.data);
+                    console.log(err.response.status);
+                    console.log(err.response.headers);
+                }
+                else{
+                    console.log(`Error: ${err.message}`);
+                }
+            }
+        }
+    }, []);
+
+    console.log(fetchGateways);
+    console.log(data);
+
+    return (
+            <MaterialTable
+            title="Gateway List"
+            options={{exportButton: true, addRowPosition:'first', actionsColumnIndex: -1}}
+            columns={columns}
+            data={data}      
+            />
+    );
+}
+
+export default GatewayListTable;
+
+
+/*
+axios.get(url)
         .then((response) => setData(response.data))
         //.then(results => {setState(results.data.gateways);
         .then((response) => {
@@ -36,17 +70,4 @@ const GatewayListTable = () =>{
         .catch((error) => {
                 console.log(error.message);
         });
-    }, []);
-
-
-    return (
-            <MaterialTable
-            title="Gateway List"
-            options={{exportButton: true, addRowPosition:'first', actionsColumnIndex: -1}}
-            columns={columns}
-            data={gateway}      
-            />
-    );
-}
-
-export default GatewayListTable;
+        */
