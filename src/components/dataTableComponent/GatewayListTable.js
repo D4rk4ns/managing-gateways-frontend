@@ -1,72 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 //import styled from 'styled-components';
 import MaterialTable from 'material-table';
+import FetchDataTable from './FetchDataTable';
 
-const GatewayListTable = () =>{
 
-    const [data, setData] = useState([]);
-    const [gateway, setGateway] = useState([]);
-    const columns= [
+const GatewayListTable = ({ item}) =>{
+    //const [gatewayUpdateTable, setGatewayUpdateTable] = useState(false);
+    //const showGatewayUPdateTable= () => setGatewayTable(!gatewayTable);
+    const [columns, setColumns] = useState([
         { title: 'Serial Number', field: 'serialNumber'},
         { title: 'Gateway Name', field: 'gatewayName'},
         { title: 'IPv4 Address', field: 'address', initialEditValue: "1.1.1.1"},
-        { title: 'Peripheral Devices', field: 'peripheralDevice', lookup:{device1:'46546',device2:'445646'}}                                    
-    ];
+        { title: 'Peripheral Devices', field: 'peripheralDevice', lookup:{device1:'46546',device2:'445646'}}
+    ]);
 
-    useEffect(() => {
-        const url = `https://managing-gateways-backend.herokuapp.com/gateway`;
-        const fetchGateways = async () =>{
-            try {
-                const response = await axios.get(url);
-                setData = (response.data);
-            } catch(err){
-                if(err.response){
-                    console.log(err.response.data);
-                    console.log(err.response.status);
-                    console.log(err.response.headers);
-                }
-                else{
-                    console.log(`Error: ${err.message}`);
-                }
-            }
-        }
-    }, []);
 
-    console.log(data);
-
-    return (
-            <MaterialTable
-            title="Gateway List"
-            options={{exportButton: true, addRowPosition:'first', actionsColumnIndex: -1}}
-            columns={columns}
-            data={data}      
-            />
-    );
+    return <>
+            <FetchDataTable />
+    </>
 }
 
 export default GatewayListTable;
 
 
 /*
-axios.get(url)
-        .then((response) => setData(response.data))
-        //.then(results => {setState(results.data.gateways);
-        .then((response) => {
-            console.log(response);
-            console.log(response.gateways);
-            console.log(response.data.gateways);
-            setGateway(response.gateways.map(function(val) {          
-                    return {
-                        serialNumber        : val.serialNumber,
-                        gatewayName         : val.gatewayName,
-                        address             : val.address,
-                        peripheralDevice    : val.peripheralDevice,          
-                    };
-                })
-            );
-        })
-        .catch((error) => {
-                console.log(error.message);
-        });
-        */
+<MaterialTable
+                title="Gateway List"
+                columns={columns}
+                data={data}
+                options={{exportButton: true, addRowPosition='first', actionsColumnIndex=-1}}
+                editable={{
+                    onRowAdd: newData =>
+                    new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                        setData([...data, newData]);
+                        resolve();
+                        }, 1000)
+                    }),
+                }}
+            />
+            */
