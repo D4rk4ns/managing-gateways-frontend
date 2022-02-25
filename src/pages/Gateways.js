@@ -2,12 +2,16 @@ import React from 'react'
 
 import Gateway from '../components/Gateway';
 
-export const GatewayList = ( ) => {
+const GatewayList = ( ) => {
     return (
+        <>
             <Gateway /> 
+        </>
         
     )
 }
+
+export default GatewayList;
 /*
 export const GatewayUpdate = ( ) => {
     return (
