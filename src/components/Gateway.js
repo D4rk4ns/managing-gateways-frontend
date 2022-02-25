@@ -18,7 +18,7 @@ class Gateway extends Component {
             serialNumber: '',
             gatewayName: '',
             address: '',
-            peripheralDevice: '',
+            peripheralDevice,
             modalType: ''
         }
     };
@@ -62,6 +62,7 @@ class Gateway extends Component {
         
         await axios.put(url+"/"+this.state.form._id, this.state.form)
         .then(response => {
+            console.log(response.peripheralDevice);
             this.modalInsert();
             this.getGateway();
         })
@@ -187,7 +188,7 @@ class Gateway extends Component {
                             <input className='form-control' type='text' name="address" id="address" onChange={this.handleChange} value={form?form.address : ''} />
                             <br />
                             <label htmlFor='peripheralDevice'>Peripheral Devices</label>
-                            <input className='form-control' type='text' name="peripheralDevice" id="peripheralDevice" onChange={this.handleChange} value={form?form.peripheralDevice : ''} />
+                            <input className='form-control' type='text' name="peripheralDevice" id="peripheralDevice" onChange={this.handleChange} value={form.peripheralDevice} />
                             <br />
                         </div>
                     </ModalBody>
