@@ -18,7 +18,7 @@ class Gateway extends Component {
             serialNumber: '',
             gatewayName: '',
             address: '',
-            peripheralDevice,
+            peripheralDevice: '',
             modalType: ''
         }
     };
@@ -188,7 +188,7 @@ class Gateway extends Component {
                             <input className='form-control' type='text' name="address" id="address" onChange={this.handleChange} value={form?form.address : ''} />
                             <br />
                             <label htmlFor='peripheralDevice'>Peripheral Devices</label>
-                            <input className='form-control' type='text' name="peripheralDevice" id="peripheralDevice" onChange={this.handleChange} value={form.peripheralDevice} />
+                            <input className='form-control' type='text' name="peripheralDevice" id="peripheralDevice" onChange={this.handleChange} value={form?form.peripheralDevice : ''} />
                             <br />
                         </div>
                     </ModalBody>
