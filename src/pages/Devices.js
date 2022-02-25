@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
+import Device from '../components/Device';
 
 const Devices = ( ) => {
     return (
-        <div className='device'>
-            <h1>Devices</h1>
-        </div>
+        <Device />
     )
 }
 

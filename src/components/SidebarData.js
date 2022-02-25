@@ -13,50 +13,13 @@ export const SidebarData = [{
     {
         title       : 'Gateways',
         path        : '/gateways',
-        icon        : <AiIcons.AiOutlineGateway />,
+        icon        : <AiIcons.AiOutlineGateway />
         
     },
     {
         title       : 'Devices',
         path        : '/devices',
-        icon        : <RiIcons.RiDeviceFill />,
-        iconClosed   : <RiIcons.RiArrowDownSFill />,
-        iconOpened  : <RiIcons.RiArrowUpSFill />,
-        subNav      : [{
-            title       : 'Add Device',
-            path        : '/devices/add',
-            icon        : <RiIcons.RiAddBoxFill />
-        },
-        {
-            title       : 'Update Device',
-            path        : '/devices/update',
-            icon        : <MdIcons.MdSystemUpdateAlt />
-        },
-        {
-            title       : 'Remove Device',
-            path        : '/devices/remove',
-            icon        : <RiIcons.RiDeleteBin2Fill />
-        }]
+        icon        : <RiIcons.RiDeviceFill />
+        
     }]
 
-
-    /*
-
-    iconClosed  : <RiIcons.RiArrowDownSFill />,
-        iconOpened  : <RiIcons.RiArrowUpSFill />,
-        subNav      : [{
-            title       : 'Add Gateway',
-            path        : '/gateways/add',
-            icon        : <RiIcons.RiAddBoxFill />
-        },
-        {
-            title       : 'Update Gateway',
-            path        : '/gateways/update',
-            icon        : <MdIcons.MdSystemUpdateAlt />
-        },
-        {
-            title       : 'Remove Gateway',
-            path        : '/gateways/remove',
-            icon        : <RiIcons.RiDeleteBin2Fill />
-        }]
-        */

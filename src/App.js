@@ -3,7 +3,7 @@ import './App.css';
 import Sidebar from './components/Sidebar';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Overview from './pages/Overview';
-import {GatewayList, GatewayUpdate, GatewayRemove} from './pages/Gateways';
+import GatewayList from './pages/Gateways';
 import Device from './pages/Devices';
 
 function App() {
@@ -11,9 +11,9 @@ function App() {
     <Router>
       <Sidebar />
       <Routes>
-        <Route path='/overview' exact element={<Overview />} />
-        <Route path='/gateways' exact element={<GatewayList/>} />
-        <Route path='/devices' exact  element={<Device />} />
+        <Route path='/overview'  element={<Overview />} />
+        <Route path='/gateways'  element={<GatewayList/>} />
+        <Route path='/devices'   element={<Device />} />
       </Routes>        
     </Router>
   );
