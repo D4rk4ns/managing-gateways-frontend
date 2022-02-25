@@ -13,8 +13,6 @@ function App() {
       <Routes>
         <Route path='/overview' exact element={<Overview />} />
         <Route path='/gateways' exact element={<GatewayList/>} />
-        <Route path='/gateways/update' exact element={<GatewayUpdate/>} />
-        <Route path='/gateways/remove' exact element={<GatewayRemove/>} />
         <Route path='/devices' exact  element={<Device />} />
       </Routes>        
     </Router>
